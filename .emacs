@@ -28,6 +28,12 @@
   ;; (add-hook 'js2-mode-hook #'js2-imenu-extras-mode)
   )
 
+(use-package rjsx-mode
+  :ensure t
+  :init
+  (add-to-list 'auto-mode-alist '("\\.jsx?$" . rjsx-mode)) ;; auto-enable for .js/.jsx files
+)
+
 (use-package prettier-js
   :ensure t
   :init
