@@ -40,10 +40,22 @@
   (add-hook 'js-mode-hook 'prettier-js-mode)
   (add-hook 'js2-mode-hook 'prettier-js-mode))
 
+(use-package csharp-mode
+  :ensure t
+  :init
+  (add-to-list 'auto-mode-alist '("\\.cs$" . csharp-mode)))
+  
 (use-package flycheck
   :ensure t
   :init
   (add-hook 'prog-mode-hook #'global-flycheck-mode))
+
+(use-package markdown-mode
+  :ensure t
+  :commands (markdown-mode gfm-mode)
+  :mode (("README\\.md\\'" . gfm-mode)
+	 ("\\.md\\'" . markdown-mode)
+	 ("\\.markdown\\'" . markdown-mode)))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -52,7 +64,9 @@
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes (quote (deeper-blue)))
  '(inhibit-startup-screen t)
- '(package-selected-packages (quote (use-package prettier flycheck js2-mode))))
+ '(package-selected-packages 
+   (quote 
+    (use-package prettier flycheck js2-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -60,6 +74,8 @@
  ;; If there is more than one, they won't work right.
  )
 
-(global-unset-key (kbd "C-c C-c"))
-(global-set-key (kbd "C-c C-c") 'comment-region)
 (put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
+;; ## added by OPAM user-setup for emacs / base ## 56ab50dc8996d2bb95e7856a6eddb17b ## you can edit, but keep this line
+(require 'opam-user-setup "~/.emacs.d/opam-user-setup.el")
+;; ## end of OPAM user-setup addition for emacs / base ## keep this line
